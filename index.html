@@ -6,18 +6,19 @@
 	<link rel="stylesheet" href="./style.css">
 </head>
 <body>
+	<header class="header">БЛОКНОТ</header>
 	<div class="todo-app">
 		<div class="main">
-			<input type="text" class="new-item" autofocus>
-			<button class="toggly-all">all</button>
+			<input type="text" class="new-item" placeholder="Новое задание" autofocus>
+			<button class="toggly-all">отметить<br>все</button>
 		</div>
 		<div class="item-list"></div>
 		<footer class="footer">
 			<div class="count"></div>
-			<button class="all-advance">all</button>
-			<button class="active-btn">active</button>
-			<button class="complete-btn">complete</button>
-			<button class="clear-complete">clear complete</button>
+			<button class="all-advance">Выбрать все</button>
+			<button class="active-btn">Активные</button>
+			<button class="complete-btn">Выполненые</button>
+			<button class="clear-complete">Очистить выполненые</button>
 		</footer>
 	</div>
 	<script src="dist/build.js"></script>
