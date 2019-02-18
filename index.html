@@ -10,14 +10,14 @@
 	<div class="todo-app">
 		<div class="main">
 			<input type="text" class="new-item" placeholder="Новое задание" autofocus>
-			<button class="toggly-all">отметить<br>все</button>
+			<button class="toggly-all">Все</button>
 		</div>
 		<div class="item-list"></div>
 		<footer class="footer">
 			<div class="count"></div>
-			<button class="all-advance">Выбрать все</button>
-			<button class="active-btn">Активные</button>
-			<button class="complete-btn">Выполненые</button>
+			<button data-filter="all" class="btn chosen">Выбрать все</button>
+			<button data-filter="0" class="btn">Активные</button>
+			<button data-filter="1" class="btn">Выполненые</button>
 			<button class="clear-complete">Очистить выполненые</button>
 		</footer>
 	</div>

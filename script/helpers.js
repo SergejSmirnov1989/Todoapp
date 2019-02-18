@@ -53,3 +53,16 @@ export let findID = (target) => {
 	}
 	return findID(target.parentNode)
 };
+
+export let setChosen = (target, selector, cssClass, parent = document) => {
+	let elements = qsa(selector, parent);
+	for (let i = 0; i < elements.length; i++) {
+		if (elements[i] !== target) {
+			elements[i].classList.remove(cssClass);
+			continue;
+		}
+		if (elements[i] === target) {
+			elements[i].classList.add(cssClass);
+		}
+	}
+};

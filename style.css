@@ -147,10 +147,8 @@ body {
     cursor: default;
 }
 
-.complete-btn,
-.active-btn,
 .clear-complete,
-.all-advance {
+.btn {
     display: inline-block;
     margin-left: 20px;
     padding: 5px 10px;
@@ -162,16 +160,13 @@ body {
     cursor: pointer;
 }
 
-.complete-btn:hover,
-.active-btn:hover,
 .clear-complete:hover,
-.all-advance:hover {
+.btn:hover {
     background-color: #dddddd;
 }
-.complete-btn:active,
-.active-btn:active,
+
 .clear-complete:active,
-.all-advance:active {
+.btn:active {
     background-color: #d9d9d9;
 }
 
@@ -192,4 +187,12 @@ body {
     outline: none;
     background-color: transparent;
     font-size: 10px;
+}
+
+.chosen {
+    background-color: dimgrey;
+}
+
+.chosen:hover {
+    background-color: dimgrey;
 }

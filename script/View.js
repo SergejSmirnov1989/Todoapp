@@ -1,5 +1,5 @@
 // import Template from "./Template";
-import {$, on, delegate, isPropInObj} from "./helpers";
+import {$, on, delegate, setChosen} from "./helpers";
 
 export default class View {
 	constructor(template) {
@@ -7,29 +7,17 @@ export default class View {
 		this.newItem = $('.new-item');
 		this.itemList = $('.item-list');
 		this.count = $('.count');
-		this.completeBtn = $('.complete-btn');
-		this.activeBtn = $('.active-btn');
 		this.clearAllBtn = $('.clear-complete');
-		this.showAllBtn = $('.all-advance');
 		this.togglyAll = $('.toggly-all');
+		this.footer = $('.footer');
 	}
 
 	setItems(items) {
 		this.itemList.innerHTML = this.template.setItems(items)
 	}
 
-	disabledBtn(items) {
-		if (!isPropInObj(items)) {
-			this.completeBtn.setAttribute('disabled', '');
-			this.clearAllBtn.setAttribute('disabled', '');
-			return
-		}
-		this.completeBtn.removeAttribute('disabled');
-		this.clearAllBtn.removeAttribute('disabled');
-	}
-
 	setCount(count) {
-		this.count.innerText =  count > 0 ? this.template.activeCount(count) : ''
+		this.count.innerText = count > 0 ? this.template.activeCount(count) : ''
 	}
 
 	editItemBegin(target, value) {
@@ -64,11 +52,15 @@ export default class View {
 	bindEditItemBegin(handler) {
 		delegate(this.itemList, '.content', 'dblclick', (e) => {
 			handler(e)
-		} )
+		})
 	}
 
-	bindFilter(target, handler) {
-		on(target, 'click', handler)
+	bindFilter(handler) {
+		delegate(this.footer, '.btn', 'click', (e) => {
+			handler(e);
+			setChosen(e.target, '.btn', 'chosen', this.footer)
+		});
+
 	}
 
 	bindClearCompleted(handler) {

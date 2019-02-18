@@ -10,24 +10,27 @@ export default class Controller {
 		view.bindCompletedToggly(this.completedToggle.bind(this));
 		view.bindEditItemBegin(this.editItemBegin.bind(this));
 		view.bindEditItemSave(this.editItemSave.bind(this));
-		view.bindFilter(view.completeBtn, this.viewComplete.bind(this));
-		view.bindFilter(view.activeBtn, this.viewActive.bind(this));
-		view.bindFilter(view.showAllBtn, this.setItems.bind(this));
+		view.bindFilter(this.viewFilter.bind(this));
 		view.bindClearCompleted(this.deleteCompleted.bind(this));
 		view.bindToggleAll(this.toggleAll.bind(this));
 	}
 
 	setItems() {
 		this.view.setItems(this.model.getTodo());
-		this.view.disabledBtn(this.model.filter(true));
 		this.setCount();
 	}
 
-	viewComplete() {
-		this.view.setItems(this.model.filter(true));
-	}
-	viewActive() {
-		this.view.setItems(this.model.filter(false));
+	viewFilter(e) {
+		let filter = e.target.dataset.filter;
+		if (!filter) {
+			return;
+		}
+		if (filter === 'all') {
+			this.setItems();
+			return;
+		}
+
+		this.view.setItems(this.model.filter(+filter));
 	}
 
 	deleteCompleted() {
