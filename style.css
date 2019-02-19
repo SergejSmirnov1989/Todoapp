@@ -176,23 +176,21 @@ body {
     align-items: center;
 }
 
-.toggly-all {
+.toggle-all {
     position: absolute;
     top: 8px;
     left: 12px;
     width: 53px;
     height: 30px;
+    padding: 0;
     border: 1px solid #d9d9d9;
     border-radius: 5px;
     outline: none;
     background-color: transparent;
     font-size: 10px;
+    text-align: center;
 }
 
 .chosen {
-    background-color: dimgrey;
-}
-
-.chosen:hover {
-    background-color: dimgrey;
+    border-color: rgba(175, 47, 47, 0.2);
 }

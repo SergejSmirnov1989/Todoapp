@@ -1,5 +1,5 @@
 // import Template from "./Template";
-import {$, on, delegate, setChosen} from "./helpers";
+import {$, qsa, on, delegate, setChosen} from "./helpers";
 
 export default class View {
 	constructor(template) {
@@ -8,7 +8,7 @@ export default class View {
 		this.itemList = $('.item-list');
 		this.count = $('.count');
 		this.clearAllBtn = $('.clear-complete');
-		this.togglyAll = $('.toggly-all');
+		this.toggleAll = $('.toggle-all');
 		this.footer = $('.footer');
 	}
 
@@ -60,15 +60,18 @@ export default class View {
 			handler(e);
 			setChosen(e.target, '.btn', 'chosen', this.footer)
 		});
-
 	}
 
 	bindClearCompleted(handler) {
-		on(this.clearAllBtn, 'click', handler)
+		on(this.clearAllBtn, 'click', handler);
+		on(this.clearAllBtn, 'click', () => {
+			let target = qsa('.btn', this.footer)[0];
+			setChosen(target, '.btn', 'chosen', this.footer)
+		})
 	}
 
 	bindToggleAll(handler) {
-		on(this.togglyAll, 'click', handler)
+		on(this.toggleAll, 'click', handler)
 	}
 
 	bindEditItemSave(handler) {
